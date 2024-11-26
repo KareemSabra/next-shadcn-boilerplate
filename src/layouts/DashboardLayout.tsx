@@ -1,20 +1,17 @@
-"use client"
+'use client';
 
-import { AppSidebar } from "@/components/shared/Sidebar";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/Sidebar";
+import { Header } from '@/components/shared/Header';
+import { AppSidebar } from '@/components/shared/Sidebar';
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
-    // --------------------------------------
-    // Mark: Main Component UI
-    // --------------------------------------
     return (
         <SidebarProvider>
             <AppSidebar />
-            <main>
-                <SidebarTrigger />
-                {children}
-            </main>
+            <SidebarInset className="flex flex-col w-full h-full">
+                <Header />
+                <main className="flex-1 w-full h-full overflow-y-auto p-6">{children}</main>
+            </SidebarInset>
         </SidebarProvider>
-    )
+    );
 }
-
